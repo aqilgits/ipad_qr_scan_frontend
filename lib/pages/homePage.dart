@@ -13,6 +13,8 @@ class HomePage extends StatelessWidget {
         SvgPicture.asset('assets/scan-qr.svg', width: width * .13);
     final Widget userQR =
         SvgPicture.asset('assets/visitor-register.svg', width: width * .13);
+    final Widget svgPetronas =
+        SvgPicture.asset('assets/petronas-logo-dark.svg', width: width * .2);
     final now = DateTime.now();
     String formattedDate = DateFormat.MMMMEEEEd().format(now);
     String formattedTime = DateFormat.jm().format(DateTime.now());
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                   fontSize: width * .025),
             ),
             Text(
-              'Petronas Twin Tower',
+              'Petronas Twin Towers',
               style: TextStyle(
                   color: Color(0XFF101828),
                   fontSize: width * .05,
@@ -52,28 +54,38 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(
-                  color: Color(0xFF00A19C),
-                  child: SizedBox(
-                    width: width * .3,
-                    height: height * .2,
-                    child: Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: height*.025),
-                          Align(
-                              alignment: const Alignment(0.1, 0.6),
-                              child: svgQR),
-                          Text(
-                            'Pre-registered visitors',
-                            style:
-                                TextStyle(color: Colors.white.withOpacity(0.8), fontSize: width*.02),
-                          ),
-                          Text('Scan QR',
+                GestureDetector(
+                  onTap: () {
+                    print("Placeholder function");
+                  },
+                  child: Card(
+                    color: Color(0xFF00A19C),
+                    child: SizedBox(
+                      width: width * .3,
+                      height: height * .2,
+                      child: Center(
+                        child: Column(
+                          children: [
+                            SizedBox(height: height * .025),
+                            Align(
+                                alignment: const Alignment(0.1, 0.6),
+                                child: svgQR),
+                            SizedBox(
+                              height: height * .015,
+                            ),
+                            Text(
+                              'Pre-registered visitors',
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold, fontSize: width*.03)),
-                        ],
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: width * .02),
+                            ),
+                            Text('Scan QR',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * .03)),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -81,30 +93,46 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: width * .04,
                 ),
-                Card(
-                  color: Color(0xFF763F98),
-                  child: SizedBox(
-                    width: width * .3,
-                    height: height * .2,
-                    child: Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: height*.025),
-                          userQR,
-                          Text('All visitors',
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8), fontSize: width*.02)),
-                          Text('Register Here',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold, fontSize: width*.03))
-                        ],
+                GestureDetector(
+                  onTap: () {
+                    print("Placeholder function");
+                  },
+                  child: Card(
+                    color: Color(0xFF763F98),
+                    child: SizedBox(
+                      width: width * .3,
+                      height: height * .2,
+                      child: Center(
+                        child: Column(
+                          children: [
+                            SizedBox(height: height * .025),
+                            userQR,
+                            SizedBox(
+                              height: height * .015,
+                            ),
+                            Text('All visitors',
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontSize: width * .02)),
+                            Text('Register Here',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * .03))
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: height * .15),
+            svgPetronas,
+            SizedBox(height: height * .025),
+            Text('302,480 hours of waiting time saved!',
+                style: TextStyle(
+                    fontSize: width * .03, fontWeight: FontWeight.bold))
           ],
         )),
       ),
