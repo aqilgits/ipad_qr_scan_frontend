@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                   fontSize: width * .05,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: height*.05),
+            SizedBox(height: height * .05),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,7 +57,25 @@ class HomePage extends StatelessWidget {
                   child: SizedBox(
                     width: width * .3,
                     height: height * .2,
-                    child: Center(child: svgQR),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SizedBox(height: height*.025),
+                          Align(
+                              alignment: const Alignment(0.1, 0.6),
+                              child: svgQR),
+                          Text(
+                            'Pre-registered visitors',
+                            style:
+                                TextStyle(color: Colors.white.withOpacity(0.8), fontSize: width*.02),
+                          ),
+                          Text('Scan QR',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold, fontSize: width*.03)),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -68,7 +86,21 @@ class HomePage extends StatelessWidget {
                   child: SizedBox(
                     width: width * .3,
                     height: height * .2,
-                    child: Center(child: userQR),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SizedBox(height: height*.025),
+                          userQR,
+                          Text('All visitors',
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8), fontSize: width*.02)),
+                          Text('Register Here',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold, fontSize: width*.03))
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],
