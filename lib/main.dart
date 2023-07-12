@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ipad_qr_scan_frontend/pages/homePage.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
+class Test extends ChangeNotifier {
+  int activePage = 0;
+  String data = '';
+  void changePage(int index) {
+    activePage = index;
+    notifyListeners();
+  }
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -31,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter tesrdsf Home Page'),
+      home: const HomePage(),
     );
   }
 }
