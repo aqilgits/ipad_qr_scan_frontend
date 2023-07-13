@@ -5,7 +5,7 @@ File? image;
 Future pickImage() async {
   print('function invoked');
   try {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
     final imageTemp = File(image.path);
     return imageTemp;

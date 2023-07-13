@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
             Text(
               'Welcome to',
               style: TextStyle(
-                  color: Color(0XFF101828).withOpacity(0.5),
+                  color: const Color(0XFF101828).withOpacity(0.5),
                   fontSize: width * .025),
             ),
             Text(
