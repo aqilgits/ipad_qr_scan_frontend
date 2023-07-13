@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:ipad_qr_scan_frontend/pages/takePicture.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
     String formattedTime = DateFormat.jm().format(DateTime.now());
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(left: width * .035, top: height * .025),
+        padding: EdgeInsets.only(top: height * .025),
         child: Center(
             child: Column(
           children: [
@@ -56,7 +57,11 @@ class HomePage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    print("Placeholder function");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TakePicture()),
+                    );
                   },
                   child: Card(
                     color: Color(0xFF00A19C),
