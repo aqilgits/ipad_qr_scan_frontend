@@ -22,6 +22,13 @@ class _WelcomePage1State extends State<WelcomePage1> {
         borderRadius: BorderRadius.circular(8.0),
       ),
     );
+    final ButtonStyle style1 = ElevatedButton.styleFrom(
+      fixedSize: Size(width * .3, height * .06),
+      backgroundColor: Color(0XFF00A19C),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    );
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -31,12 +38,15 @@ class _WelcomePage1State extends State<WelcomePage1> {
             children: [
               ElevatedButton(
                 style: style,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                    ..pop()
+                    ..pop();
+                },
                 child: Center(
                   child: Row(
                     children: [
                       Icon(
-                        // <-- Icon
                         Icons.arrow_back,
                         size: width * .02,
                         color: Colors.white,
@@ -44,8 +54,8 @@ class _WelcomePage1State extends State<WelcomePage1> {
                       SizedBox(width: width * .01),
                       Text(
                         'Go Back',
-                        style:
-                            TextStyle(color: Colors.white, fontSize: width * .02),
+                        style: TextStyle(
+                            color: Colors.white, fontSize: width * .02),
                       ),
                     ],
                   ),
@@ -58,6 +68,33 @@ class _WelcomePage1State extends State<WelcomePage1> {
             ],
           ),
         ),
-        body: Text(widget.code));
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Welcome, ${widget.code}!',
+                  style: TextStyle(
+                      fontSize: width * .05,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0XFF101828))),
+              Text(
+                  'To verify your identity, we will \n take a photo of your face',
+                  style: TextStyle(
+                      fontSize: width * .03, color: Color(0XFF101828)),
+                  textAlign: TextAlign.center),
+              SizedBox(
+                height: height * .06,
+              ),
+              ElevatedButton(
+                  style: style1,
+                  onPressed: () {},
+                  child: Text(
+                    'Okay',
+                    style:
+                        TextStyle(color: Colors.white, fontSize: width * .03),
+                  )),
+            ],
+          ),
+        ));
   }
 }
