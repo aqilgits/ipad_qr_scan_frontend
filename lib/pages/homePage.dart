@@ -63,14 +63,12 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () async {
-                    final result = await Navigator.push(
+                  onTap: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => QRScanner(screenClosed: false)),
                     );
-                    print('result is');
-                    print(result);
                   },
                   child: Card(
                     color: Color(0xFF00A19C),

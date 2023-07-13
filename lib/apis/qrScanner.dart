@@ -1,3 +1,4 @@
+import 'package:ipad_qr_scan_frontend/pages/welcomePage1.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,10 @@ class _QRScannerState extends State<QRScanner> {
     if (!widget.screenClosed) {
       final String code = barcode.rawValue ?? "---";
       widget.screenClosed = true;
-      Navigator.pop(context, code);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomePage1(code: code)),
+      );
     }
   }
 }
