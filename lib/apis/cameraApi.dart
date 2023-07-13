@@ -3,7 +3,6 @@ import 'dart:io';
 
 File? image;
 Future pickImage() async {
-  print('function invoked');
   try {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
