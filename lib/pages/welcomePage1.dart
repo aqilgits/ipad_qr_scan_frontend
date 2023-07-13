@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 
 class WelcomePage1 extends StatefulWidget {
   const WelcomePage1({Key? key, required this.code}) : super(key: key);
@@ -87,7 +88,9 @@ class _WelcomePage1State extends State<WelcomePage1> {
               ),
               ElevatedButton(
                   style: style1,
-                  onPressed: () {},
+                  onPressed: () async {
+                    final data = await pickImage();
+                  },
                   child: Text(
                     'Okay',
                     style:

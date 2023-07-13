@@ -1,6 +1,7 @@
 import 'package:ipad_qr_scan_frontend/pages/welcomePage1.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: must_be_immutable
 class QRScanner extends StatefulWidget {
@@ -19,43 +20,53 @@ class _QRScannerState extends State<QRScanner> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    final ButtonStyle style = ElevatedButton.styleFrom(
+      backgroundColor: Color(0XFF00A19C),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    );
+    final Widget svgPetronas =
+        SvgPicture.asset('assets/petronas-logo-white.svg', width: width * .13);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mobile Scanner"),
-        actions: [
-          IconButton(
-            color: Colors.white,
-            icon: ValueListenableBuilder(
-              valueListenable: cameraController.torchState,
-              builder: (context, state, child) {
-                switch (state) {
-                  case TorchState.off:
-                    return const Icon(Icons.flash_off, color: Colors.grey);
-                  case TorchState.on:
-                    return const Icon(Icons.flash_on, color: Colors.yellow);
-                }
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0XFF222222),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+              style: style,
+              onPressed: () {
+                Navigator.of(context)
+                  .pop();
+                 
               },
+              child: Center(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back,
+                      size: width * .02,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: width * .01),
+                    Text(
+                      'Go Back',
+                      style:
+                          TextStyle(color: Colors.white, fontSize: width * .02),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            iconSize: 32.0,
-            onPressed: () => cameraController.toggleTorch(),
-          ),
-          IconButton(
-            color: Colors.white,
-            icon: ValueListenableBuilder(
-              valueListenable: cameraController.cameraFacingState,
-              builder: (context, state, child) {
-                switch (state) {
-                  case CameraFacing.front:
-                    return const Icon(Icons.camera_front);
-                  case CameraFacing.back:
-                    return const Icon(Icons.camera_rear);
-                }
-              },
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Align(child: svgPetronas),
             ),
-            iconSize: 32.0,
-            onPressed: () => cameraController.switchCamera(),
-          ),
-        ],
+          ],
+        ),
       ),
       body: MobileScanner(
         allowDuplicates: true,
