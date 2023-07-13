@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:ipad_qr_scan_frontend/pages/takePicture.dart';
+import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,16 +25,22 @@ class HomePage extends StatelessWidget {
         child: Center(
             child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  formattedTime,
-                  style: TextStyle(fontSize: width * .05),
-                )),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Text(formattedDate,
-                    style: TextStyle(fontSize: width * .025))),
+            Padding(
+              padding: EdgeInsets.only(left: width * .025),
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    formattedTime,
+                    style: TextStyle(fontSize: width * .05),
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: width * .025),
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(formattedDate,
+                      style: TextStyle(fontSize: width * .025))),
+            ),
             SizedBox(
               height: height * .04,
             ),
@@ -56,12 +62,9 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TakePicture()),
-                    );
+                  onTap: () async {
+                    final data = await pickImage();
+                    print(data);
                   },
                   child: Card(
                     color: Color(0xFF00A19C),
