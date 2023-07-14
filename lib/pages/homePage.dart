@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/apis/qrScanner.dart';
+import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -108,7 +109,17 @@ class HomePage extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     final data = await pickImage();
-                    print(data);
+                    if (data != null) {
+                      print(data);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => PreviewPage(
+                                imageFile: data,
+                              )),
+                        ),
+                      );
+                    }
                   },
                   child: Card(
                     color: Color(0xFF763F98),
