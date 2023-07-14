@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ipad_qr_scan_frontend/pages/registerPage.dart';
 
 import '../apis/cameraApi.dart';
 
@@ -94,7 +95,14 @@ class PreviewPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => const RegisterPage1()),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
