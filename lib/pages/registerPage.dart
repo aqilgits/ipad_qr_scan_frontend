@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
+
+import '../apis/visitorApi.dart';
 
 class RegisterPage1 extends StatefulWidget {
   const RegisterPage1({super.key});
@@ -13,6 +18,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _ic = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +139,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                         borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(20)),
                 child: Text(
-                  'Continue',
+                  'Register',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width * .03,
@@ -141,6 +147,12 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                   ),
                 ),
                 onPressed: () {
+                  createVisitor(jsonEncode(Visitor(
+                          ic: _ic.text,
+                          name: _name.text,
+                          email: _email.text,
+                          image: "http://www.google.com")
+                      .toJson()));
                   Navigator.push(
                     context,
                     MaterialPageRoute(
