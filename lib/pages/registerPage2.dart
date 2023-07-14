@@ -1,11 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ipad_qr_scan_frontend/apis/visitorApi.dart';
 
 class RegisterPage2 extends StatefulWidget {
-  const RegisterPage2(
+  RegisterPage2(
       {Key? key, required this.name, required this.email, required this.ic})
       : super(key: key);
   final String name, email, ic;
+
   @override
   State<RegisterPage2> createState() => _RegisterPage2State();
 }
@@ -41,19 +43,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * .5,
-            child: TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 3, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Color(0xFF00A19C), width: 3.0),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
+            // child: DropdownButton(items: visitors, onChanged: onChanged),
           ),
         ],
       )),

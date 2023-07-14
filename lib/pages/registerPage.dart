@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
