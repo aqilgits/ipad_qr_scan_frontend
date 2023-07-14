@@ -28,7 +28,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .02,
+            height: MediaQuery.of(context).size.height * .01,
           ),
           Container(
             width: MediaQuery.of(context).size.width * .5,
@@ -43,7 +43,88 @@ class _RegisterPage2State extends State<RegisterPage2> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * .5,
-            // child: DropdownButton(items: visitors, onChanged: onChanged),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * .5,
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(width: 3, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0xFF00A19C), width: 3.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .01,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * .5,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Time",
+              style: TextStyle(
+                  color: const Color(0XFF101828),
+                  fontSize: MediaQuery.of(context).size.width * .03,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * .5,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * .5,
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(width: 3, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0xFF00A19C), width: 3.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .01,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * .5,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Venue",
+              style: TextStyle(
+                  color: const Color(0XFF101828),
+                  fontSize: MediaQuery.of(context).size.width * .03,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * .5,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * .5,
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(width: 3, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0xFF00A19C), width: 3.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       )),
