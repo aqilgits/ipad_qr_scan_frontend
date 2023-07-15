@@ -156,7 +156,6 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                   ),
                   onPressed: () async {
                     final imgUrl = await storeImage(widget.imageFile);
-                    print('THIS IS IAMGE $imgUrl');
                     setState(() {
                       loading = true;
                     });
