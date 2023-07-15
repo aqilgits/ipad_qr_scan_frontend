@@ -31,6 +31,7 @@ Future<Meeting> fetchMeeting(body) async {
         "content-type": "application/json"
       },
     );
+    print(jsonDecode(response.body));
   } catch (e) {
     log(e.toString());
   }

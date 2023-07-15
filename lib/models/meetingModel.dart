@@ -14,11 +14,11 @@ class Meeting {
 
   factory Meeting.fromJson(Map<String, dynamic> json) {
     return Meeting(
-        email: json['email'],
-        time: json['time'],
-        venue: json['venue'],
-        host: json['host'],
-        visitor: json['visitor']);
+        email: json['meeting']['email'],
+        time: json['meeting']['time'],
+        venue: json['meeting']['venue'],
+        host: json['meeting']['host'],
+        visitor: json['meeting']['visitor']);
   }
   Map<String, dynamic> toJson() => {
         "email": email,
