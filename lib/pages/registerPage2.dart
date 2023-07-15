@@ -1,18 +1,30 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/apis/visitorApi.dart';
+import 'package:ipad_qr_scan_frontend/models/meetingModel.dart';
+import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
 
 class RegisterPage2 extends StatefulWidget {
   RegisterPage2(
       {Key? key, required this.name, required this.email, required this.ic})
       : super(key: key);
   final String name, email, ic;
-
   @override
   State<RegisterPage2> createState() => _RegisterPage2State();
 }
 
 class _RegisterPage2State extends State<RegisterPage2> {
+  Future<Meeting> getVisitor() {
+    Future<Meeting> visitor = fetchMeeting(widget.ic);
+    return visitor;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getVisitor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

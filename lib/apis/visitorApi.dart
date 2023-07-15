@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 
+import '../models/meetingModel.dart';
+import '../models/visitorModel.dart';
+
 Future<http.Response?> createVisitor(body) async {
   print(body);
   http.Response? response;
@@ -18,23 +21,18 @@ Future<http.Response?> createVisitor(body) async {
   return response;
 }
 
-Future<List<String>> fetchMeeting(body) async {
-  List<String> visitors = [];
+Future<Meeting> fetchMeeting(body) async {
+  dynamic response;
   try {
-    http.Response response = await http.get(
+    response = await http.get(
       Uri.parse("http://10.0.2.2:5000/api/v1/meeting/$body"),
       headers: {
         "Accept": "application/json",
         "content-type": "application/json"
       },
     );
-    var jsonData = json.decode(response.body) as List;
-    for (var element in jsonData) {
-      visitors.add(element["email"]);
-    }
-    print(visitors);
   } catch (e) {
     log(e.toString());
   }
-  return visitors;
+  return Meeting.fromJson(jsonDecode(response.body));
 }
