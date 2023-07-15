@@ -1,13 +1,15 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
 
 import '../apis/visitorApi.dart';
 
 class RegisterPage1 extends StatefulWidget {
-  const RegisterPage1({super.key});
-
+  const RegisterPage1({super.key, required this.imageFile});
+  final File? imageFile;
   @override
   State<RegisterPage1> createState() => _RegisterPageState1();
 }
@@ -153,6 +155,8 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                     ),
                   ),
                   onPressed: () async {
+                    final imgUrl = await storeImage(widget.imageFile);
+                    print('THIS IS IAMGE $imgUrl');
                     setState(() {
                       loading = true;
                     });
@@ -160,7 +164,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                                 ic: _ic.text,
                                 name: _name.text,
                                 email: _email.text,
-                                image: "http://www.google.com")
+                                image: imgUrl)
                             .toJson()))
                         .then(
                       (value) {

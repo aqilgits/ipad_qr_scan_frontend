@@ -99,7 +99,7 @@ class PreviewPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: ((context) => const RegisterPage1()),
+                          builder: ((context) => RegisterPage1(imageFile: imageFile)),
                         ),
                       );
                     },
