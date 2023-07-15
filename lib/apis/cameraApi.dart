@@ -10,8 +10,6 @@ Future pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
     final imageTemp = File(image.path);
-    final imageStore = File(image.path);
-    await saveImage(imageStore);
     print('test');
     return imageTemp;
   } on Exception catch (e) {
