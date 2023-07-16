@@ -47,11 +47,7 @@ class _PrintingMPState extends State<PrintingMP> {
               ElevatedButton(
                 style: style,
                 onPressed: () {
-                  Navigator.of(context)
-                    ..pop()
-                    ..pop()
-                    ..pop()
-                    ..pop();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 },
                 child: Center(
                   child: Row(
