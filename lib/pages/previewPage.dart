@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/pages/printingMP.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage.dart';
-import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
+// import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
 import 'dart:convert';
 import '../apis/cameraApi.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,9 +40,7 @@ class PreviewPage extends StatelessWidget {
             ElevatedButton(
               style: style,
               onPressed: () {
-                Navigator.of(context)
-                  .pop();
-                 
+                Navigator.of(context).pop();
               },
               child: Center(
                 child: Row(
@@ -102,7 +100,8 @@ class PreviewPage extends StatelessWidget {
                       side: const BorderSide(width: 3, color: Colors.red),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      padding: EdgeInsets.all(width*.02) //content padding inside button
+                      padding: EdgeInsets.all(
+                          width * .02) //content padding inside button
                       ),
                   onPressed: () async {
                     final data = await pickImage();
@@ -134,20 +133,19 @@ class PreviewPage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF00A19C),
-                      side: const BorderSide(
-                          width: 3, color: Color(0xFF00A19C)),
+                      side:
+                          const BorderSide(width: 3, color: Color(0xFF00A19C)),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       padding: EdgeInsets.all(
-                          width*.01) //content padding inside button
+                          width * .01) //content padding inside button
                       ),
                   child: Text(
                     'Continue',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: width * .025
-                    ),
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: width * .025),
                   ),
                   onPressed: () {
                     if (user == null) {
@@ -166,11 +164,10 @@ class PreviewPage extends StatelessWidget {
                       //         RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
                       //   ),
                       // );
-                       Navigator.push(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: ((context) =>
-                              const PrintingMP()),
+                          builder: ((context) => const PrintingMP()),
                         ),
                       );
                     }

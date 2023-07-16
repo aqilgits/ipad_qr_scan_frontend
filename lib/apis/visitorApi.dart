@@ -35,5 +35,14 @@ Future<Meeting> fetchMeeting(body) async {
   } catch (e) {
     log(e.toString());
   }
-  return Meeting.fromJson(jsonDecode(response.body));
+  if (jsonDecode(response.body)['meeting']['email'] != null) {
+    return Meeting.fromJson(jsonDecode(response.body));
+  } else {
+    return const Meeting(
+        email: '--No email--',
+        time: '--No Time--',
+        venue: '--No venue--',
+        host: '--No meeting--',
+        visitor: '--No Visitor--');
+  }
 }
