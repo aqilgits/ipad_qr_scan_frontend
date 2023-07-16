@@ -1,26 +1,46 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:ipad_qr_scan_frontend/apis/visitorApi.dart';
+import 'package:ipad_qr_scan_frontend/models/meetingModel.dart';
+// import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterPage2 extends StatefulWidget {
-  const RegisterPage2(
+  RegisterPage2(
       {Key? key, required this.name, required this.email, required this.ic})
       : super(key: key);
   final String name, email, ic;
-
   @override
   State<RegisterPage2> createState() => _RegisterPage2State();
 }
 
 class _RegisterPage2State extends State<RegisterPage2> {
-  String dropdownvalue = 'Lisa Chan';
+  late Meeting dropdownvalue = const Meeting(
+      email: '--No email--',
+      time: '--No Time--',
+      venue: '--No venue--',
+      host: '--Select host--',
+      visitor: '--No Visitor--');
+  late List<Meeting> host;
+  Future<Meeting> getVisitor() {
+    Future<Meeting> host = fetchMeeting(widget.ic);
+    return host;
+  }
 
-  var hosts = [
-    'Lisa Chan',
-    'Patreena',
-    'Patshi Acharya',
-    'Patrick Loo',
-  ];
+  Future<List<Meeting>> convertMeetingToList(
+      Future<Meeting> futureModel) async {
+    Meeting model = await futureModel;
+    List<Meeting> host = [model];
+    return host;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getVisitor();
+    convertMeetingToList(getVisitor());
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -86,7 +106,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
             height: MediaQuery.of(context).size.height * .01,
           ),
           Container(
-            width: MediaQuery.of(context).size.width * .8,
+            width: MediaQuery.of(context).size.width * .7,
             alignment: Alignment.centerLeft,
             child: Text(
               "Who's your host?",
@@ -98,7 +118,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
           ),
           Container(
             height: MediaQuery.of(context).size.width * .07,
-            width: MediaQuery.of(context).size.width * .8,
+            width: MediaQuery.of(context).size.width * .7,
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * .01,
               vertical: MediaQuery.of(context).size.height * .01,
@@ -111,22 +131,36 @@ class _RegisterPage2State extends State<RegisterPage2> {
               ),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: DropdownButton(
-              value: dropdownvalue,
-              icon: const Icon(Icons.keyboard_arrow_down),
-              items: hosts.map((String host) {
-                return DropdownMenuItem(
-                  value: host,
-                  child: Text(host),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownvalue = newValue!;
-                });
-              },
-            ),
-          ),
+            child: FutureBuilder<List<Meeting>>(
+                future: convertMeetingToList(getVisitor()),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else if (snapshot.hasData) {
+                    print("this is data");
+                    print(snapshot.data![0].email);
+                    return DropdownButton<Meeting>(
+                      value: dropdownvalue,
+                      onChanged: (newValue) {
+                        setState(() {
+                          dropdownvalue = newValue!;
+                        });
+                      },
+                      items: snapshot.data
+                          ?.map<DropdownMenuItem<Meeting>>((Meeting model) {
+                        return DropdownMenuItem<Meeting>(
+                          value: model,
+                          child: Text(model.host),
+                        );
+                      }).toList(),
+                    );
+                  } else {
+                    return Text("try");
+                  }
+                }),
+          )
         ],
       )),
     );

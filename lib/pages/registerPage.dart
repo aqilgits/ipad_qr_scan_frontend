@@ -19,6 +19,12 @@ class _RegisterPageState1 extends State<RegisterPage1> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _ic = TextEditingController();
   bool loading = false;
+  String dropdownvalue = 'NRIC';
+
+  var documentType = [
+    'NRIC',
+    'Passport',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,166 +80,177 @@ class _RegisterPageState1 extends State<RegisterPage1> {
           ),
         ),
         body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Welcome to Petronas",
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Welcome to Petronas",
+                style: TextStyle(
+                    color: const Color(0XFF101828),
+                    fontSize: MediaQuery.of(context).size.width * .05,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * .05,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * .8,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Name",
                   style: TextStyle(
                       color: const Color(0XFF101828),
-                      fontSize: MediaQuery.of(context).size.width * .05,
+                      fontSize: MediaQuery.of(context).size.width * .03,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .05,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .8,
+                child: TextField(
+                  controller: _name,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xFF00A19C), width: 3.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  alignment: Alignment.centerLeft,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * .03,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * .8,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Document Type",
+                  style: TextStyle(
+                      color: const Color(0XFF101828),
+                      fontSize: MediaQuery.of(context).size.width * .03,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.width * .07,
+                width: MediaQuery.of(context).size.width * .8,
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * .01,
+                  vertical: MediaQuery.of(context).size.height * .01,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: DropdownButton(
+                  value: dropdownvalue,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: documentType.map((String doc) {
+                    return DropdownMenuItem(
+                      value: doc,
+                      child: Text(doc),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownvalue = newValue!;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * .03,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * .8,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Identity card / Passport",
+                  style: TextStyle(
+                      color: const Color(0XFF101828),
+                      fontSize: MediaQuery.of(context).size.width * .03,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .8,
+                child: TextField(
+                  controller: _ic,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xFF00A19C), width: 3.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * .08,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .5,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF00A19C),
+                      side:
+                          const BorderSide(width: 3, color: Color(0xFF00A19C)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.all(20)),
                   child: Text(
-                    "Name",
+                    'Register',
                     style: TextStyle(
-                        color: const Color(0XFF101828),
-                        fontSize: MediaQuery.of(context).size.width * .03,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .8,
-                  child: TextField(
-                    controller: _name,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color(0xFF00A19C), width: 3.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width * .03,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onPressed: () async {
+                    final imgUrl = await storeImage(widget.imageFile);
+                    setState(() {
+                      loading = true;
+                    });
+                    await createVisitor(jsonEncode(Visitor(
+                                ic: _ic.text,
+                                name: _name.text,
+                                email: _email.text,
+                                image: imgUrl)
+                            .toJson()))
+                        .then(
+                      (value) {
+                        setState(() {
+                          loading = false;
+                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => RegisterPage2(
+                                name: _name.text,
+                                email: _email.text,
+                                ic: _ic.text)),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .03,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Email",
-                    style: TextStyle(
-                        color: const Color(0XFF101828),
-                        fontSize: MediaQuery.of(context).size.width * .03,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .8,
-                  child: TextField(
-                    controller: _email,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color(0xFF00A19C), width: 3.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .03,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Identity card / Passport",
-                    style: TextStyle(
-                        color: const Color(0XFF101828),
-                        fontSize: MediaQuery.of(context).size.width * .03,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .8,
-                  child: TextField(
-                    controller: _ic,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color(0xFF00A19C), width: 3.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .08,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .5,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF00A19C),
-                        side:
-                            const BorderSide(width: 3, color: Color(0xFF00A19C)),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(20)),
-                    child: Text(
-                      'Register',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width * .03,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () async {
-                      final imgUrl = await storeImage(widget.imageFile);
-                      setState(() {
-                        loading = true;
-                      });
-                      await createVisitor(jsonEncode(Visitor(
-                                  ic: _ic.text,
-                                  name: _name.text,
-                                  email: _email.text,
-                                  image: imgUrl)
-                              .toJson()))
-                          .then(
-                        (value) {
-                          setState(() {
-                            loading = false;
-                          });
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => RegisterPage2(
-                                  name: _name.text,
-                                  email: _email.text,
-                                  ic: _ic.text)),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       );
