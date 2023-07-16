@@ -79,6 +79,7 @@ class MeetingDetailsPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
