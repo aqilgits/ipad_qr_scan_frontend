@@ -5,6 +5,7 @@ import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraCustom.dart';
 import 'package:ipad_qr_scan_frontend/apis/qrScanner.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
+import 'package:ipad_qr_scan_frontend/pages/printingMP.dart';
 import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
@@ -145,18 +146,24 @@ class _HomePageState extends State<HomePage> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        final data = await pickImage();
-                        if (data != null) {
-                          print(data);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => PreviewPage(
-                                    imageFile: data,
-                                  )),
-                            ),
-                          );
-                        }
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  PrintingMP()),
+                        );
+                        // final data = await pickImage();
+                        // if (data != null) {
+                        //   print(data);
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: ((context) => PreviewPage(
+                        //             imageFile: data,
+                        //           )),
+                        //     ),
+                        //   );
+                        // }
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(
