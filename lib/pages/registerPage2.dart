@@ -100,7 +100,6 @@ class _RegisterPage2State extends State<RegisterPage2> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * .08,
             width: MediaQuery.of(context).size.width * .8,
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * .01,
@@ -115,6 +114,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: DropdownButton(
+              isExpanded: true,
               underline: const SizedBox(),
               value: dropdownvalue,
               icon: const Icon(Icons.keyboard_arrow_down),
