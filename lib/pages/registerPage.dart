@@ -93,7 +93,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .05,
+                height: MediaQuery.of(context).size.height * .03,
               ),
               Container(
                 width: MediaQuery.of(context).size.width * .8,
@@ -125,7 +125,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .03,
+                height: MediaQuery.of(context).size.height * .03,
               ),
               Container(
                 width: MediaQuery.of(context).size.width * .8,
@@ -154,6 +154,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: DropdownButton(
+                  underline: const SizedBox(),
                   value: dropdownvalue,
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: documentType.map((String doc) {
@@ -170,7 +171,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .03,
+                height: MediaQuery.of(context).size.height * .03,
               ),
               Container(
                 width: MediaQuery.of(context).size.width * .8,
@@ -202,18 +203,18 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .08,
+                height: MediaQuery.of(context).size.height * .03,
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF00A19C),
-                      side:
-                          const BorderSide(width: 3, color: Color(0xFF00A19C)),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(20)),
+                    backgroundColor: Color(0xFF00A19C),
+                    side: const BorderSide(width: 3, color: Color(0xFF00A19C)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.all(20),
+                  ),
                   child: Text(
                     'Register',
                     style: TextStyle(

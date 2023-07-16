@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ipad_qr_scan_frontend/pages/meetingDetailsPage.dart';
 
 class RegisterPage2 extends StatefulWidget {
   const RegisterPage2(
@@ -99,7 +100,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.width * .07,
+            height: MediaQuery.of(context).size.height * .08,
             width: MediaQuery.of(context).size.width * .8,
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * .01,
@@ -114,6 +115,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: DropdownButton(
+              underline: const SizedBox(),
               value: dropdownvalue,
               icon: const Icon(Icons.keyboard_arrow_down),
               items: hosts.map((String host) {
@@ -126,8 +128,18 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 setState(() {
                   dropdownvalue = newValue!;
                 });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MeetingDetailsPage(
+                            name: dropdownvalue,
+                          )),
+                );
               },
             ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .03,
           ),
         ],
       )),
