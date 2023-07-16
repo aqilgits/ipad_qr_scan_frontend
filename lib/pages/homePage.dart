@@ -4,12 +4,15 @@ import 'package:intl/intl.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraCustom.dart';
 import 'package:ipad_qr_scan_frontend/apis/qrScanner.dart';
+import 'package:ipad_qr_scan_frontend/pages/pageForNew.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 import 'package:ipad_qr_scan_frontend/pages/printingMP.dart';
 import 'package:video_player/video_player.dart';
+import 'package:camera/camera.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, this.camera});
+  final CameraDescription? camera;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -147,24 +150,30 @@ class _HomePageState extends State<HomePage> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          final data = await pickImage();
-                          if (data != null) {
-                            print(data);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => PreviewPage(
-                                      imageFile: data,
-                                    )),
-                              ),
-                            );
-                          }
+                          // final data = await pickImage();
+                          // if (data != null) {
+                          //   print(data);
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: ((context) => PreviewPage(
+                          //             imageFile: data,
+                          //           )),
+                          //     ),
+                          //   );
+                          // }
                           // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(
-                          //       builder: ((context) => CameraCustom()),
+                          //       builder: ((context) => TakePictureScreen(camera: camera)),
                           //     ),
                           //   );
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => const PageForNew()),
+                              ),
+                            );
                         },
                         child: Card(
                           color: Color(0xFF763F98),
