@@ -139,7 +139,6 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.width * .07,
                 width: MediaQuery.of(context).size.width * .8,
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * .01,
@@ -224,31 +223,21 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                     ),
                   ),
                   onPressed: () async {
-                    final imgUrl = await storeImage(widget.imageFile);
                     setState(() {
                       loading = true;
                     });
-                    await createVisitor(jsonEncode(Visitor(
-                                ic: _ic.text,
-                                name: _name.text,
-                                email: _email.text,
-                                image: imgUrl)
-                            .toJson()))
-                        .then(
-                      (value) {
-                        setState(() {
-                          loading = false;
-                        });
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: ((context) => RegisterPage2(
-                                name: _name.text,
-                                email: _email.text,
-                                ic: _ic.text)),
-                          ),
-                        );
-                      },
+                    await storeImage(widget.imageFile);
+                    setState(() {
+                      loading = false;
+                    });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => RegisterPage2(
+                            name: _name.text,
+                            email: _email.text,
+                            ic: _ic.text)),
+                      ),
                     );
                   },
                 ),

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
-import 'package:ipad_qr_scan_frontend/apis/cameraCustom.dart';
 import 'package:ipad_qr_scan_frontend/apis/qrScanner.dart';
 import 'package:ipad_qr_scan_frontend/pages/pageForNew.dart';
-import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
-import 'package:ipad_qr_scan_frontend/pages/printingMP.dart';
 import 'package:video_player/video_player.dart';
 import 'package:camera/camera.dart';
 
