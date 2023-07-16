@@ -1,3 +1,4 @@
+import 'package:ipad_qr_scan_frontend/apis/qrOverlay.dart';
 import 'package:ipad_qr_scan_frontend/pages/welcomePage1.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:flutter/material.dart';
@@ -68,11 +69,17 @@ class _QRScannerState extends State<QRScanner> {
           ],
         ),
       ),
-      body: MobileScanner(
-        allowDuplicates: true,
-        controller: cameraController,
-        onDetect: _foundBarcode,
-      ),
+      body: Stack(
+        children: [
+          MobileScanner(
+            allowDuplicates: false,
+            controller: cameraController,
+            onDetect: _foundBarcode,
+          ),
+          QRScannerOverlay(overlayColour: Colors.black.withOpacity(0.5))
+        ],
+      )
+      
     );
   }
 
