@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:lottie/lottie.dart';
+import 'dart:math';
 
 class PrintingMP extends StatefulWidget {
   const PrintingMP({super.key});
@@ -14,6 +15,7 @@ class _PrintingMPState extends State<PrintingMP> {
   int status = 0;
   @override
   Widget build(BuildContext context) {
+    int intValue = Random().nextInt(4);
     List images = const [
       'assets/visitor_sticker_A6.png',
       'assets/visitor_sticker_A6(1).png',
@@ -98,7 +100,7 @@ class _PrintingMPState extends State<PrintingMP> {
                             elevation: 8,
                             shadowColor: Colors.black,
                             child: Image.asset(
-                              images[1],
+                              images[intValue],
                               height: height * .3,
                             ),
                           ),

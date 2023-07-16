@@ -88,7 +88,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 height: MediaQuery.of(context).size.width * .05,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Name",
@@ -99,8 +99,9 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 child: TextField(
+                  style: const TextStyle(fontSize: .05),
                   controller: _name,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -117,10 +118,10 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .01,
+                height: MediaQuery.of(context).size.width * .03,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Email",
@@ -131,8 +132,9 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 child: TextField(
+                  style: const TextStyle(fontSize: .05),
                   controller: _email,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -149,10 +151,10 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .01,
+                height: MediaQuery.of(context).size.width * .03,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Identity card / Passport",
@@ -163,9 +165,10 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * .5,
+                width: MediaQuery.of(context).size.width * .8,
                 child: TextField(
                   controller: _ic,
+                  style: const TextStyle(fontSize: .05),
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -181,7 +184,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .03,
+                height: MediaQuery.of(context).size.width * .08,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .5,
