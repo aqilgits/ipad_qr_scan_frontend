@@ -102,6 +102,7 @@ class PreviewPage extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontSize: width * .025
                       ),
                     ),
                     onPressed: () {
