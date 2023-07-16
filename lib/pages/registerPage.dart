@@ -109,6 +109,8 @@ class _RegisterPageState1 extends State<RegisterPage1> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * .8,
                 child: TextField(
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * .025),
                   controller: _name,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -153,13 +155,18 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: DropdownButton(
+                  isExpanded: true,
                   underline: const SizedBox(),
                   value: dropdownvalue,
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: documentType.map((String doc) {
                     return DropdownMenuItem(
                       value: doc,
-                      child: Text(doc),
+                      child: Text(
+                        doc,
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .025),
+                      ),
                     );
                   }).toList(),
                   onChanged: (String? newValue) {
@@ -186,6 +193,8 @@ class _RegisterPageState1 extends State<RegisterPage1> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * .8,
                 child: TextField(
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * .025),
                   controller: _ic,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
