@@ -3,12 +3,17 @@ import 'package:ipad_qr_scan_frontend/pages/homePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:path_provider_android/path_provider_android.dart';
 import 'dart:io';
+import 'package:camera/camera.dart';
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
   if (Platform.isAndroid) PathProviderAndroid.registerWith();
-  runApp(const MyApp());
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+  runApp(MyApp(camera: firstCamera));
 }
 class Test extends ChangeNotifier {
   int activePage = 0;
@@ -19,7 +24,9 @@ class Test extends ChangeNotifier {
   }
 }
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.camera});
+
+  final CameraDescription? camera;
 
   // This widget is the root of your application.
   @override
@@ -45,7 +52,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: HomePage(camera: camera),
     );
   }
 }

@@ -51,7 +51,10 @@ dependencies:
   file_utils: ^1.0.1
   simple_animations: ^5.0.2
   lottie: ^2.4.0
-  
+  camera: ^0.10.5+2
+  path: ^1.8.3
+  full_screen_image: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
