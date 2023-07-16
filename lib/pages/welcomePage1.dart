@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
+import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
+import 'dart:convert';
 
 class WelcomePage1 extends StatefulWidget {
   const WelcomePage1({Key? key, required this.code}) : super(key: key);
@@ -13,6 +15,7 @@ class WelcomePage1 extends StatefulWidget {
 class _WelcomePage1State extends State<WelcomePage1> {
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> user = json.decode(widget.code);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final Widget svgPetronas =
@@ -73,7 +76,7 @@ class _WelcomePage1State extends State<WelcomePage1> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Welcome, ${widget.code}!',
+              Text('Welcome, ${user['name']}!',
                   style: TextStyle(
                       fontSize: width * .05,
                       fontWeight: FontWeight.bold,
@@ -90,6 +93,18 @@ class _WelcomePage1State extends State<WelcomePage1> {
                   style: style1,
                   onPressed: () async {
                     final data = await pickImage();
+                    if (data != null) {
+                          print(data);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => PreviewPage(
+                                    imageFile: data,
+                                    userData: widget.code,
+                                  )),
+                            ),
+                          );
+                        }
                   },
                   child: Text(
                     'Okay',

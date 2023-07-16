@@ -2,14 +2,22 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage.dart';
-
+import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
+import 'dart:convert';
 import '../apis/cameraApi.dart';
 
 class PreviewPage extends StatelessWidget {
-  const PreviewPage({Key? key, required this.imageFile}) : super(key: key);
+  PreviewPage({Key? key, required this.imageFile, this.userData})
+      : super(key: key);
   final File? imageFile;
+  final String? userData;
+
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic>? user;
+    if (userData != null) {
+      user = json.decode(userData!);
+    } else {}
     return Scaffold(
       body: Padding(
         padding:
@@ -91,17 +99,27 @@ class PreviewPage extends StatelessWidget {
                       'Continue',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width * .02,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => RegisterPage1(imageFile: imageFile)),
-                        ),
-                      );
+                      if (user == null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                RegisterPage1(imageFile: imageFile)),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
+                          ),
+                        );
+                      }
                     },
                   ),
                 ),
