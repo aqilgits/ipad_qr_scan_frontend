@@ -38,6 +38,7 @@ class _PrintingMPState extends State<PrintingMP> {
           duration: const Duration(seconds: 2));
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: height * .08,
           automaticallyImplyLeading: false,
           backgroundColor: Color(0XFF222222),
           title: Row(

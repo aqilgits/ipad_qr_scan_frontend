@@ -22,6 +22,7 @@ class _QRScannerState extends State<QRScanner> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final ButtonStyle style = ElevatedButton.styleFrom(
       backgroundColor: Color(0XFF00A19C),
       shape: RoundedRectangleBorder(
@@ -32,6 +33,7 @@ class _QRScannerState extends State<QRScanner> {
         SvgPicture.asset('assets/petronas-logo-white.svg', width: width * .13);
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: height * .08,
         automaticallyImplyLeading: false,
         backgroundColor: Color(0XFF222222),
         title: Row(

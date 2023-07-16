@@ -32,6 +32,7 @@ class PreviewPage extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: height * .08,
         automaticallyImplyLeading: false,
         backgroundColor: Color(0XFF222222),
         title: Row(

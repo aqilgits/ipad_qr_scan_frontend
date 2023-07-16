@@ -24,6 +24,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final Widget svgPetronas =
         SvgPicture.asset('assets/petronas-logo-white.svg', width: width * .2);
     final ButtonStyle style = ElevatedButton.styleFrom(
@@ -34,6 +35,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
     );
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: height * .08,
         automaticallyImplyLeading: false,
         backgroundColor: Color(0XFF222222),
         title: Row(
