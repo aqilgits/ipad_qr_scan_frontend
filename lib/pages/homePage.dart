@@ -146,24 +146,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  PrintingMP()),
-                        );
-                        // final data = await pickImage();
-                        // if (data != null) {
-                        //   print(data);
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: ((context) => PreviewPage(
-                        //             imageFile: data,
-                        //           )),
-                        //     ),
-                        //   );
-                        // }
+                        final data = await pickImage();
+                        if (data != null) {
+                          print(data);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => PreviewPage(
+                                    imageFile: data,
+                                  )),
+                            ),
+                          );
+                        }
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(

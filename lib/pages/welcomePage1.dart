@@ -5,8 +5,8 @@ import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 import 'dart:convert';
 
 class WelcomePage1 extends StatefulWidget {
-  const WelcomePage1({Key? key, required this.code}) : super(key: key);
-  final String code;
+  const WelcomePage1({Key? key, this.code}) : super(key: key);
+  final String? code;
 
   @override
   State<WelcomePage1> createState() => _WelcomePage1State();
@@ -15,7 +15,7 @@ class WelcomePage1 extends StatefulWidget {
 class _WelcomePage1State extends State<WelcomePage1> {
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> user = json.decode(widget.code);
+    Map<String, dynamic> user = json.decode(widget.code!);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final Widget svgPetronas =

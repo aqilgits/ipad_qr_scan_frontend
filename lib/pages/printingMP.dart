@@ -32,8 +32,8 @@ class _PrintingMPState extends State<PrintingMP> {
       ),
     );
     final tween = MovieTween()
-          ..tween('y', Tween<double>(begin: 0, end: 500.0),
-              duration: const Duration(seconds: 2));
+      ..tween('y', Tween<double>(begin: 0, end: 500.0),
+          duration: const Duration(seconds: 2));
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -44,7 +44,11 @@ class _PrintingMPState extends State<PrintingMP> {
               ElevatedButton(
                 style: style,
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context)
+                    ..pop()
+                    ..pop()
+                    ..pop()
+                    ..pop();
                 },
                 child: Center(
                   child: Row(
@@ -71,59 +75,75 @@ class _PrintingMPState extends State<PrintingMP> {
             ],
           ),
         ),
-        body:  status == 0 ? Center(
-          child: Column(
-            children: [
-              SizedBox(height: height * .12),
-              Text('Almost there!'),
-              SizedBox(height: height * .025),
-              Text(
-                ' Your badge is being printed..',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: height * .025),
-              CustomAnimationBuilder(
-                tween: tween, // Pass in tween
-                duration: tween.duration, // Obtain duration
-                builder: (context, value, child) {
-                  return Transform.translate(
-                    // Get animated offset
-                    offset: Offset(0, value.get('y')),
-                    child: Card(
-                    elevation: 8,
-                    shadowColor: Colors.black,
-                    child: Image.asset(
-                      images[1],
-                      height: height * .3,
-                    ),
-                  ),
-                  );
-                },
-                onCompleted: () =>  setState(() {
-                  status = 1;
-                }),
-              ),
-            ],
-          ),
-        ): Stack(
-          children: [
-            Center(
-              child: Column(
+        body: status == 0
+            ? Center(
+                child: Column(
                   children: [
                     SizedBox(height: height * .12),
-                    Image.asset('assets/Ellipse2.png' ,height: height*0.2),
-                    SizedBox(height: height * .05),
-                    Text('Your host is on the way!', style: TextStyle(fontSize: width*.03)),
-                    SizedBox(height: height * .05),
-                    Text('Collect your badge below \n and proceed to the gate', style: TextStyle(fontWeight: FontWeight.bold, fontSize: width*.04)),
-                    SizedBox(height: height * .05),
-                    Text('At the gate, present the QR on your badge', style: TextStyle(fontSize: width*.03)),
-                    Lottie.asset('assets/green-arrow-down.json', height: height *.2),
+                    Text('Almost there!'),
+                    SizedBox(height: height * .025),
+                    Text(
+                      ' Your badge is being printed..',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: height * .025),
+                    CustomAnimationBuilder(
+                      tween: tween, // Pass in tween
+                      duration: tween.duration, // Obtain duration
+                      builder: (context, value, child) {
+                        return Transform.translate(
+                          // Get animated offset
+                          offset: Offset(0, value.get('y')),
+                          child: Card(
+                            elevation: 8,
+                            shadowColor: Colors.black,
+                            child: Image.asset(
+                              images[1],
+                              height: height * .3,
+                            ),
+                          ),
+                        );
+                      },
+                      onCompleted: () => setState(() {
+                        status = 1;
+                      }),
+                    ),
                   ],
                 ),
-            ),
-              Lottie.asset('assets/confetti.json', height: height, width: width),
-          ],
-        ));
+              )
+            : Column(
+                children: [
+                  Stack(
+                    children: [
+                      Center(
+                        child: Column(
+                          children: [
+                            SizedBox(height: height * .12),
+                            Image.asset('assets/Ellipse2.png',
+                                height: height * 0.2),
+                            SizedBox(height: height * .05),
+                            Text('Your host is on the way!',
+                                style: TextStyle(fontSize: width * .03)),
+                            SizedBox(height: height * .05),
+                            Text(
+                                'Collect your badge below \n and proceed to the gate',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * .04)),
+                            SizedBox(height: height * .05),
+                            Text('At the gate, present the QR on your badge',
+                                style: TextStyle(fontSize: width * .03)),
+                            Lottie.asset('assets/green-arrow-down.json',
+                                height: height * .2),
+                          ],
+                        ),
+                      ),
+                      Lottie.asset(
+                        'assets/confetti.json',
+                      ),
+                    ],
+                  ),
+                ],
+              ));
   }
 }
