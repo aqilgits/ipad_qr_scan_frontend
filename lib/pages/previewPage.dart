@@ -5,6 +5,7 @@ import 'package:ipad_qr_scan_frontend/pages/registerPage.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
 import 'dart:convert';
 import '../apis/cameraApi.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PreviewPage extends StatelessWidget {
   PreviewPage({Key? key, required this.imageFile, this.userData})
@@ -16,12 +17,57 @@ class PreviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    final Widget svgPetronas =
+        SvgPicture.asset('assets/petronas-logo-white.svg', width: width * .2);
+    final ButtonStyle style = ElevatedButton.styleFrom(
+      backgroundColor: Color(0XFF00A19C),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    );
     Map<String, dynamic>? user;
     if (userData != null) {
       user = json.decode(userData!);
     }
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0XFF222222),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+              style: style,
+              onPressed: () {
+                Navigator.of(context)
+                  .pop();
+                 
+              },
+              child: Center(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back,
+                      size: width * .02,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: width * .01),
+                    Text(
+                      'Go Back',
+                      style:
+                          TextStyle(color: Colors.white, fontSize: width * .02),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Align(child: svgPetronas),
+            ),
+          ],
+        ),
+      ),
       body: Padding(
         padding:
             EdgeInsets.only(top: height * .025),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
+import 'package:ipad_qr_scan_frontend/apis/cameraCustom.dart';
 import 'package:ipad_qr_scan_frontend/apis/qrScanner.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 import 'package:video_player/video_player.dart';
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          Expanded(child: VideoPlayer(videoPlayerController!)),
+          VideoPlayer(videoPlayerController!),
           Padding(
             padding: EdgeInsets.only(top: height * .025),
             child: Center(
@@ -64,7 +65,9 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.topLeft,
                       child: Text(
                         formattedTime,
-                        style: TextStyle(fontSize: width * .05, color: const Color(0XFFFFFFFF)),
+                        style: TextStyle(
+                            fontSize: width * .05,
+                            color: const Color(0XFFFFFFFF)),
                       )),
                 ),
                 Padding(
@@ -72,7 +75,9 @@ class _HomePageState extends State<HomePage> {
                   child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(formattedDate,
-                          style: TextStyle(fontSize: width * .025, color: const Color(0XFFFFFFFF)))),
+                          style: TextStyle(
+                              fontSize: width * .025,
+                              color: const Color(0XFFFFFFFF)))),
                 ),
                 SizedBox(
                   height: height * .04,
@@ -86,8 +91,9 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Petronas Twin Towers',
                   style: TextStyle(
-                      color: Color(0XFFFFFFFF),
-                      fontSize: width * .05,),
+                    color: Color(0XFFFFFFFF),
+                    fontSize: width * .05,
+                  ),
                 ),
                 SizedBox(height: height * .05),
                 Row(
@@ -151,6 +157,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         }
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: ((context) => CameraCustom()),
+                        //     ),
+                        //   );
                       },
                       child: Card(
                         color: Color(0xFF763F98),
@@ -192,11 +204,15 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('Waiting time saved : ', style: TextStyle(color: const Color(0XFFFFFFFF)
-                          ),),
+                          Text(
+                            'Waiting time saved : ',
+                            style: TextStyle(color: const Color(0XFFFFFFFF), fontSize: width*.02),
+                          ),
                           Text('302,480 Minutes',
-                              style: TextStyle(fontFamily: 'Vcr',
-                                  fontSize: width * .03, color: const Color(0XFFFFFFFF))),
+                              style: TextStyle(
+                                  fontFamily: 'Vcr',
+                                  fontSize: width * .03,
+                                  color: const Color(0XFFFFFFFF))),
                         ],
                       ),
                     ],

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/models/visitorModel.dart';
 import 'package:ipad_qr_scan_frontend/pages/registerPage2.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../apis/visitorApi.dart';
 
 class RegisterPage1 extends StatefulWidget {
@@ -22,10 +22,57 @@ class _RegisterPageState1 extends State<RegisterPage1> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    final Widget svgPetronas =
+        SvgPicture.asset('assets/petronas-logo-white.svg', width: width * .2);
+    final ButtonStyle style = ElevatedButton.styleFrom(
+      backgroundColor: Color(0XFF00A19C),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    );
     if (loading) {
       return const Center(child: CircularProgressIndicator());
     } else {
       return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Color(0XFF222222),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                style: style,
+                onPressed: () {
+                  Navigator.of(context)
+                    ..pop()
+                    ..pop();
+                },
+                child: Center(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_back,
+                        size: width * .02,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: width * .01),
+                      Text(
+                        'Go Back',
+                        style: TextStyle(
+                            color: Colors.white, fontSize: width * .02),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Align(child: svgPetronas),
+              ),
+            ],
+          ),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

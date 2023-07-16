@@ -44,7 +44,12 @@ dependencies:
   firebase_core: ^2.3.0
   video_player: ^2.7.0
   chewie: ^1.7.0
-
+  camerawesome: ^1.4.0
+  better_open_file: ^3.6.4
+  path_provider: ^2.0.15
+  path_provider_android: ^2.0.27
+  file_utils: ^1.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ipad_qr_scan_frontend/pages/homePage.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'package:path_provider_android/path_provider_android.dart';
+import 'dart:io';
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
+  if (Platform.isAndroid) PathProviderAndroid.registerWith();
   runApp(const MyApp());
 }
 class Test extends ChangeNotifier {
