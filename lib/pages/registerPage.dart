@@ -236,7 +236,7 @@ class _RegisterPageState1 extends State<RegisterPage1> {
                       setState(() {
                         loading = true;
                       });
-                      await storeImage(widget.imageFile);
+                      // await storeImage(widget.imageFile);
                       setState(() {
                         loading = false;
                       });
