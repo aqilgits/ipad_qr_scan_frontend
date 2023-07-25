@@ -58,8 +58,8 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(top: height * .025),
             child: Center(
                 child: SingleChildScrollView(
-                  child: Column(
-                              children: [
+              child: Column(
+                children: [
                   Padding(
                     padding: EdgeInsets.only(left: width * .025),
                     child: Align(
@@ -165,11 +165,11 @@ class _HomePageState extends State<HomePage> {
                           //     ),
                           //   );
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => const PageForNew()),
-                              ),
-                            );
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => const PageForNew()),
+                            ),
+                          );
                         },
                         child: Card(
                           color: Color(0xFF763F98),
@@ -213,7 +213,9 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               'Waiting time saved : ',
-                              style: TextStyle(color: const Color(0XFFFFFFFF), fontSize: width*.02),
+                              style: TextStyle(
+                                  color: const Color(0XFFFFFFFF),
+                                  fontSize: width * .02),
                             ),
                             Text('302,480 Minutes',
                                 style: TextStyle(
@@ -225,9 +227,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   )
-                              ],
-                            ),
-                )),
+                ],
+              ),
+            )),
           ),
         ],
       ),

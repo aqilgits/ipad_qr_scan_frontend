@@ -4,6 +4,8 @@ import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 import 'dart:convert';
 
+import '../configs/visitorSticker.dart';
+
 class WelcomePage1 extends StatefulWidget {
   const WelcomePage1({Key? key, this.code}) : super(key: key);
   final String? code;
@@ -87,6 +89,7 @@ class _WelcomePage1State extends State<WelcomePage1> {
                   style: TextStyle(
                       fontSize: width * .03, color: Color(0XFF101828)),
                   textAlign: TextAlign.center),
+              Text("data"),
               SizedBox(
                 height: height * .06,
               ),
@@ -95,17 +98,17 @@ class _WelcomePage1State extends State<WelcomePage1> {
                   onPressed: () async {
                     final data = await pickImage();
                     if (data != null) {
-                          print(data);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => PreviewPage(
-                                    imageFile: data,
-                                    userData: widget.code,
-                                  )),
-                            ),
-                          );
-                        }
+                      print(data);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => PreviewPage(
+                                imageFile: data,
+                                userData: widget.code,
+                              )),
+                        ),
+                      );
+                    }
                   },
                   child: Text(
                     'Okay',

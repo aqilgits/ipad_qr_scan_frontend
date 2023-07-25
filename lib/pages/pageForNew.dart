@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
+import 'package:ipad_qr_scan_frontend/configs/visitorSticker.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
 
 class PageForNew extends StatefulWidget {
@@ -41,9 +42,7 @@ class _PageForNewState extends State<PageForNew> {
               ElevatedButton(
                 style: style,
                 onPressed: () {
-                  Navigator.of(context)
-                    .pop();
-         
+                  Navigator.of(context).pop();
                 },
                 child: Center(
                   child: Row(
@@ -92,17 +91,16 @@ class _PageForNewState extends State<PageForNew> {
                   onPressed: () async {
                     final data = await pickImage();
                     if (data != null) {
-                          print(data);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => PreviewPage(
-                                    imageFile: data,
-                            
-                                  )),
-                            ),
-                          );
-                        }
+                      print(data);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => PreviewPage(
+                                imageFile: data,
+                              )),
+                        ),
+                      );
+                    }
                   },
                   child: Text(
                     'Okay',
