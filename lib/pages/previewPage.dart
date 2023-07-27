@@ -26,10 +26,10 @@ class PreviewPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
     );
-    Map<String, dynamic>? user;
-    if (userData != null) {
-      user = json.decode(userData!);
-    }
+    // Map<String, dynamic>? user;
+    // if (userData != null) {
+    //   user = json.decode(userData!);
+    // }
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: height * .08,
@@ -70,7 +70,9 @@ class PreviewPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: height*.08,),
+          SizedBox(
+            height: height * .08,
+          ),
           Text(
             "Looking great!",
             style: TextStyle(
@@ -149,29 +151,35 @@ class PreviewPage extends StatelessWidget {
                         fontSize: width * .025),
                   ),
                   onPressed: () {
-                    if (user == null) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) =>
-                              RegisterPage1(imageFile: imageFile)),
-                        ),
-                      );
-                    } else {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: ((context) =>
-                      //         RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
-                      //   ),
-                      // );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => const PrintingMP()),
-                        ),
-                      );
-                    }
+                    // if (user == null) {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: ((context) =>
+                    //           RegisterPage1(imageFile: imageFile)),
+                    //     ),
+                    //   );
+                    // } else {
+                    //   // Navigator.push(
+                    //   //   context,
+                    //   //   MaterialPageRoute(
+                    //   //     builder: ((context) =>
+                    //   //         RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
+                    //   //   ),
+                    //   // );
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: ((context) => const PrintingMP()),
+                    //     ),
+                    //   );
+                    // }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const PrintingMP()),
+                      ),
+                    );
                   },
                 ),
               ),

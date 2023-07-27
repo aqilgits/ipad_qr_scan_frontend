@@ -99,33 +99,39 @@ class _QRScannerState extends State<QRScanner> {
     }
   }
 
-  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) {
-    late Future<Visitor> visitor;
+  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) async {
+    // late Future<Visitor> visitor;
+    Visitor visitor;
 
     /// open screen
     if (!widget.screenClosed) {
       print('founded');
       final String code = barcode.rawValue ?? "---";
-      visitor = fetchVisitor(code);
-      FutureBuilder<Visitor>(
-        future: visitor,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            print('inside');
-            print(snapshot.data!.visitor_email);
-            widget.screenClosed = true;
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => WelcomePage1(code: code)),
-            );
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
-
-          // By default, show a loading spinner.
-          return const CircularProgressIndicator();
-        },
+      visitor = await fetchVisitor(code);
+      print(visitor.visitor_email);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomePage1(visitor_email: visitor.visitor_email, visitor_name: visitor.visitor_name, visitor_nric: visitor.visitor_nric)),
       );
+      // FutureBuilder<Visitor>(
+      //   future: visitor,
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       print('inside');
+      //       print(snapshot.data!.visitor_email);
+      //       widget.screenClosed = true;
+      //       Navigator.push(
+      //         context,
+      //         MaterialPageRoute(builder: (context) => WelcomePage1(code: code)),
+      //       );
+      //     } else if (snapshot.hasError) {
+      //       return Text('${snapshot.error}');
+      //     }
+
+      //     // By default, show a loading spinner.
+      //     return const CircularProgressIndicator();
+      //   },
+      // );
     }
   }
 }
