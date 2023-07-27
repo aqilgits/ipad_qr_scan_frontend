@@ -54,6 +54,10 @@ dependencies:
   camera: ^0.10.5+2
   path: ^1.8.3
   full_screen_image: ^2.0.0
+  background_sms: ^0.0.4
+  permission_handler: ^10.2.0
+  flutter_sms:
+    path: C:/Users/lukma/Desktop/flutter_sms-master
 
 dev_dependencies:
   flutter_test:

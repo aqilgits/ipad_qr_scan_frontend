@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
-
+import '../apis/smsApi.dart';
 import '../configs/visitorSticker.dart';
 
 class PrintingMP extends StatefulWidget {
@@ -89,27 +89,30 @@ class _PrintingMPState extends State<PrintingMP> {
                     ),
                     SizedBox(height: height * .025),
                     CustomAnimationBuilder(
-                      tween: tween, // Pass in tween
-                      duration: tween.duration, // Obtain duration
-                      builder: (context, value, child) {
-                        return Transform.translate(
-                          // Get animated offset
-                          offset: Offset(0, value.get('y')),
-                          child: Card(
-                            elevation: 8,
-                            shadowColor: Colors.black,
-                            // child: Image.asset(
-                            //   images[intValue],
-                            //   height: height * .3,
-                            // ),
-                            child: visitorSticker(context, intValue),
-                          ),
-                        );
-                      },
-                      onCompleted: () => setState(() {
-                        status = 1;
-                      }),
-                    ),
+                        tween: tween, // Pass in tween
+                        duration: tween.duration, // Obtain duration
+                        builder: (context, value, child) {
+                          return Transform.translate(
+                            // Get animated offset
+                            offset: Offset(0, value.get('y')),
+                            child: Card(
+                              elevation: 8,
+                              shadowColor: Colors.black,
+                              // child: Image.asset(
+                              //   images[intValue],
+                              //   height: height * .3,
+                              // ),
+                              child: visitorSticker(context, intValue),
+                            ),
+                          );
+                        },
+                        onCompleted: () => {
+                              setState(() {
+                                status = 1;
+                              }),
+                              // smsApi("+60169867645",
+                              //     "Hi Mr/Ms, your visitor already registered"),
+                            }),
                   ],
                 ),
               )
