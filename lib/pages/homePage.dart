@@ -116,8 +116,8 @@ class _HomePageState extends State<HomePage> {
                             height: height * .2,
                             child: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SizedBox(height: height * .025),
                                   Align(
                                       alignment: const Alignment(0.1, 0.6),
                                       child: svgQR),
@@ -178,8 +178,8 @@ class _HomePageState extends State<HomePage> {
                             height: height * .2,
                             child: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SizedBox(height: height * .025),
                                   userQR,
                                   SizedBox(
                                     height: height * .015,

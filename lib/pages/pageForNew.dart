@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:ipad_qr_scan_frontend/configs/visitorSticker.dart';
 import 'package:ipad_qr_scan_frontend/pages/previewPage.dart';
-
+import 'package:lottie/lottie.dart';
 class PageForNew extends StatefulWidget {
   const PageForNew({Key? key}) : super(key: key);
 
@@ -78,6 +78,12 @@ class _PageForNewState extends State<PageForNew> {
                       fontSize: width * .05,
                       fontWeight: FontWeight.bold,
                       color: Color(0XFF101828))),
+                      Container(
+                height: height*.3,
+                width: width*.5,
+                  child:
+                      Lottie.asset('assets/animation_lklf2f5o.json'),
+                ),
               Text(
                   'To verify your identity, we will \n take a photo of your face',
                   style: TextStyle(

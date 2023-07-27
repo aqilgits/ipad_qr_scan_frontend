@@ -69,8 +69,8 @@ class PreviewPage extends StatelessWidget {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: height*.08,),
           Text(
             "Looking great!",
             style: TextStyle(
@@ -88,19 +88,19 @@ class PreviewPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: height * .03),
+          SizedBox(height: height * .05),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 height: height * .05,
-                width: width * 0.2,
+                width: width * 0.3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white.withOpacity(1),
-                      side: const BorderSide(width: 3, color: Colors.red),
+                      side: const BorderSide(width: 1, color: Colors.red),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(6)),
                       padding: EdgeInsets.all(
                           width * .02) //content padding inside button
                       ),
@@ -135,9 +135,9 @@ class PreviewPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF00A19C),
                       side:
-                          const BorderSide(width: 3, color: Color(0xFF00A19C)),
+                          const BorderSide(width: 1, color: Color(0xFF00A19C)),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(6)),
                       padding: EdgeInsets.all(
                           width * .01) //content padding inside button
                       ),

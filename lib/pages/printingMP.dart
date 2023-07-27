@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
-import '../apis/smsApi.dart';
+// import '../apis/smsApi.dart';
 import '../configs/visitorSticker.dart';
 
 class PrintingMP extends StatefulWidget {
@@ -36,8 +36,8 @@ class _PrintingMPState extends State<PrintingMP> {
       ),
     );
     final tween = MovieTween()
-      ..tween('y', Tween<double>(begin: 0, end: 500.0),
-          duration: const Duration(seconds: 2));
+      ..tween('y', Tween<double>(begin: 0, end: height*.7),
+          duration: const Duration(seconds: 4));
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: height * .08,
