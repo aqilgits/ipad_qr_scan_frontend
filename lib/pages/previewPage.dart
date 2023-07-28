@@ -93,7 +93,7 @@ class PreviewPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
               child: Image.file(
                 File(imageFile!.path),
-                width: width * .5,
+                width: width * .7,
                 // height: height,
               ),
             ),

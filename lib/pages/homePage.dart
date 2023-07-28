@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    videoPlayerController!.dispose();
+    // videoPlayerController!.dispose();
     super.dispose();
   }
 

@@ -74,6 +74,7 @@ class _QRScannerState extends State<QRScanner> {
         ),
         body: Stack(
           children: [
+
             MobileScanner(
               allowDuplicates: false,
               controller: cameraController,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 Widget visitorSticker(
     BuildContext context, int count, String? name, File? image) {
@@ -16,7 +17,7 @@ Widget visitorSticker(
   return Container(
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(width * .015)),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
     ),
     width: width * .4,
     child: Column(
@@ -41,12 +42,21 @@ Widget visitorSticker(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Core Tech Sdn Bhd"),
-                      Text("Host: Lisa Chan, Stack Sdn Bhd"),
-                      Text("Meeting Room E, Tower 2, Level 7"),
+                      Text(
+                        "Core Tech Sdn Bhd",
+                        style: TextStyle(fontSize: width * .012),
+                      ),
+                      Text(
+                        "Host: Lisa Chan, Stack Sdn Bhd",
+                        style: TextStyle(fontSize: width * .012),
+                      ),
+                      Text(
+                        "Meeting Room E, Tower 2, Level 7",
+                        style: TextStyle(fontSize: width * .012),
+                      ),
                     ],
                   ),
                   ClipRRect(
@@ -63,7 +73,7 @@ Widget visitorSticker(
           ),
         ),
         Container(
-          height: height * .22,
+          height: height * .17,
           child: Stack(
             children: [
               SizedBox(
@@ -73,7 +83,7 @@ Widget visitorSticker(
                     fit: BoxFit.fill,
                   )),
               Positioned(
-                  width: width * .4,
+                  width: width * .45,
                   bottom: -3,
                   right: 0,
                   child: Container(
@@ -89,9 +99,26 @@ Widget visitorSticker(
                       children: [
                         SvgPicture.asset('assets/petronas-logo-white.svg',
                             width: width * .1),
-                        Text(
-                          DateTime.now().toString(),
-                          style: TextStyle(color: Colors.white),
+                        Row(
+                          children: [
+                            Text(
+                              DateFormat.yMd().format(DateTime.now()),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: width * .015,
+                                fontFamily: 'Vcr',
+                              ),
+                            ),
+                            SizedBox(width: width* .01),
+                            Text(
+                              DateFormat.jm().format(DateTime.now()),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: width * .015,
+                                fontFamily: 'Vcr',
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),

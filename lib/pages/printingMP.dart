@@ -130,39 +130,8 @@ class _PrintingMPState extends State<PrintingMP> {
               )
             : Stack(
                 children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        SizedBox(height: height * .12),
-                        Image.asset('assets/Ellipse2.png',
-                            height: height * 0.2),
-                        SizedBox(height: height * .05),
-                        Text('Your host is on the way!',
-                            style: TextStyle(fontSize: width * .03)),
-                        SizedBox(height: height * .05),
-                        Text(
-                            'Collect your badge below \n and proceed to the gate',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: width * .04)),
-                        SizedBox(height: height * .05),
-                        Text('At the gate, present the QR on your badge',
-                            style: TextStyle(fontSize: width * .03)),
-                        Lottie.asset('assets/green-arrow-down.json',
-                            height: height * .2),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Lottie.asset(
-                              fit: BoxFit.fill, 'assets/RWfNO6XXiM.json'),
-                        ),
-                      ),
-                    ],
-                  ),
+                  visitorSticker(context, intValue,
+                                  widget.userName, widget.image)
                 ],
               ));
   }
