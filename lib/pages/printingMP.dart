@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ipad_qr_scan_frontend/apis/cameraApi.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
 // import '../apis/smsApi.dart';
 import '../configs/visitorSticker.dart';
+import 'dart:io';
 
 class PrintingMP extends StatefulWidget {
-  const PrintingMP({super.key});
+  PrintingMP({super.key, this.userName, this.image});
+
+  String? userName;
+  File? image;
 
   @override
   State<PrintingMP> createState() => _PrintingMPState();
@@ -17,6 +22,8 @@ class _PrintingMPState extends State<PrintingMP> {
   int status = 0;
   @override
   Widget build(BuildContext context) {
+    print('NOHHH');
+    print(widget.userName);
     int intValue = Random().nextInt(4);
     List images = const [
       'assets/visitor_sticker_A6.png',
@@ -36,7 +43,7 @@ class _PrintingMPState extends State<PrintingMP> {
       ),
     );
     final tween = MovieTween()
-      ..tween('y', Tween<double>(begin: 0, end: height*.7),
+      ..tween('y', Tween<double>(begin: 0, end: height * .7),
           duration: const Duration(seconds: 4));
     return Scaffold(
         appBar: AppBar(
@@ -81,11 +88,15 @@ class _PrintingMPState extends State<PrintingMP> {
                 child: Column(
                   children: [
                     SizedBox(height: height * .12),
-                    Text('Almost there!'),
+                    Text(
+                      'Almost there!',
+                      style: TextStyle(fontSize: width * .04),
+                    ),
                     SizedBox(height: height * .025),
                     Text(
                       ' Your badge is being printed..',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: width * .05),
                     ),
                     SizedBox(height: height * .025),
                     CustomAnimationBuilder(
@@ -102,7 +113,8 @@ class _PrintingMPState extends State<PrintingMP> {
                               //   images[intValue],
                               //   height: height * .3,
                               // ),
-                              child: visitorSticker(context, intValue),
+                              child: visitorSticker(context, intValue,
+                                  widget.userName, widget.image),
                             ),
                           );
                         },

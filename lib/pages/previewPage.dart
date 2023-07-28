@@ -9,10 +9,17 @@ import '../apis/cameraApi.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PreviewPage extends StatelessWidget {
-  PreviewPage({Key? key, required this.imageFile, this.userData})
+  PreviewPage(
+      {Key? key,
+      required this.imageFile,
+      this.userIC,
+      this.userName,
+      this.userEmail})
       : super(key: key);
   final File? imageFile;
-  final String? userData;
+  final String? userIC;
+  final String? userName;
+  final String? userEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -83,10 +90,11 @@ class PreviewPage extends StatelessWidget {
           SizedBox(height: height * .03),
           Center(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(50),
               child: Image.file(
                 File(imageFile!.path),
-                width: width * .7,
+                width: width * .5,
+                // height: height,
               ),
             ),
           ),
@@ -134,54 +142,55 @@ class PreviewPage extends StatelessWidget {
                 height: height * .05,
                 width: width * 0.4,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF00A19C),
-                      side:
-                          const BorderSide(width: 1, color: Color(0xFF00A19C)),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
-                      padding: EdgeInsets.all(
-                          width * .01) //content padding inside button
-                      ),
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: width * .025),
-                  ),
-                  onPressed: () {
-                    // if (user == null) {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: ((context) =>
-                    //           RegisterPage1(imageFile: imageFile)),
-                    //     ),
-                    //   );
-                    // } else {
-                    //   // Navigator.push(
-                    //   //   context,
-                    //   //   MaterialPageRoute(
-                    //   //     builder: ((context) =>
-                    //   //         RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
-                    //   //   ),
-                    //   // );
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: ((context) => const PrintingMP()),
-                    //     ),
-                    //   );
-                    // }
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: ((context) => const PrintingMP()),
-                      ),
-                    );
-                  },
-                ),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF00A19C),
+                        side: const BorderSide(
+                            width: 1, color: Color(0xFF00A19C)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
+                        padding: EdgeInsets.all(
+                            width * .01) //content padding inside button
+                        ),
+                    child: Text(
+                      'Continue',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: width * .025),
+                    ),
+                    onPressed: () {
+                      if (userIC == null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                RegisterPage1(imageFile: imageFile)),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => PrintingMP(
+                                userName: userName, image: imageFile)),
+                          ),
+                        );
+                      }
+                      //   // Navigator.push(
+                      //   //   context,
+                      //   //   MaterialPageRoute(
+                      //   //     builder: ((context) =>
+                      //   //         RegisterPage2(name: user?['name'], email: user?['email'], ic: user?['ic'],)),
+                      //   //   ),
+                      //   // );
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: ((context) => const PrintingMP()),
+                      //     ),
+                      //   );
+                      // }
+                    }),
               ),
             ],
           ),

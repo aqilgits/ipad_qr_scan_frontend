@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:io';
 
-Widget visitorSticker(BuildContext context, int count) {
+Widget visitorSticker(
+    BuildContext context, int count, String? name, File? image) {
   List images = const [
     'assets/bottom-1.png',
     'assets/bottom-2.png',
@@ -26,15 +28,15 @@ Widget visitorSticker(BuildContext context, int count) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Rachel",
+                name!,
                 style: TextStyle(
                     fontSize: width * .05, fontWeight: FontWeight.bold),
               ),
-              Text(
-                "How",
-                style: TextStyle(
-                    fontSize: width * .03, fontWeight: FontWeight.bold),
-              ),
+              // Text(
+              //   "How",
+              //   style: TextStyle(
+              //       fontSize: width * .03, fontWeight: FontWeight.bold),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -47,9 +49,13 @@ Widget visitorSticker(BuildContext context, int count) {
                       Text("Meeting Room E, Tower 2, Level 7"),
                     ],
                   ),
-                  Image.asset(
-                    'assets/Ellipse2.png',
-                    width: width * .07,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(
+                      File(image!.path),
+                      width: width * .05,
+                      // height: height,
+                    ),
                   ),
                 ],
               ),

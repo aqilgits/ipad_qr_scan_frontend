@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 void smsApi(phoneNo, message) async {
+  print(phoneNo + ':' + message);
   http.Response response;
   try {
     response = await http.post(

@@ -7,10 +7,12 @@ import 'package:lottie/lottie.dart';
 import '../configs/visitorSticker.dart';
 
 class WelcomePage1 extends StatefulWidget {
-  const WelcomePage1({Key? key, this.visitor_email, this.visitor_nric, this.visitor_name}) : super(key: key);
+  const WelcomePage1(
+      {Key? key, this.visitor_email, this.visitor_nric, this.visitor_name})
+      : super(key: key);
   final String? visitor_email;
-final String? visitor_nric;
-final String? visitor_name;
+  final String? visitor_nric;
+  final String? visitor_name;
   @override
   State<WelcomePage1> createState() => _WelcomePage1State();
 }
@@ -84,7 +86,7 @@ class _WelcomePage1State extends State<WelcomePage1> {
                       fontSize: width * .05,
                       fontWeight: FontWeight.bold,
                       color: Color(0XFF101828))),
-                      Container(
+              Container(
                 height: height * .3,
                 width: width * .5,
                 child: Lottie.asset('assets/animation_lklf2f5o.json'),
@@ -107,9 +109,10 @@ class _WelcomePage1State extends State<WelcomePage1> {
                         context,
                         MaterialPageRoute(
                           builder: ((context) => PreviewPage(
-                                imageFile: data,
-                                // userData: widget.code,
-                              )),
+                              imageFile: data,
+                              userIC: widget.visitor_nric,
+                              userName: widget.visitor_name,
+                              userEmail: widget.visitor_email)),
                         ),
                       );
                     }

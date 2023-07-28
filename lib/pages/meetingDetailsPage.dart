@@ -245,7 +245,7 @@ class MeetingDetailsPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: ((context) => const PrintingMP()),
+                    builder: ((context) => PrintingMP()),
                   ),
                 );
               },
